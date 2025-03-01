@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能作业批改系统 - 管理员控制台</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="admin-page">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>智能作业批改系统</h1>
+                <span class="subtitle">管理员控制台</span>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- 管理员登录部分 -->
+        <section id="admin-login-section" class="admin-login-section">
+            <div class="admin-login-container">
+                <h2>管理员登录</h2>
+                <div class="form-group">
+                    <label for="admin-username">用户名</label>
+                    <input type="text" id="admin-username" placeholder="请输入管理员用户名">
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">密码</label>
+                    <input type="password" id="admin-password" placeholder="请输入管理员密码">
+                </div>
+                <button id="admin-login-btn" class="btn primary-btn">登录</button>
+                <p class="admin-note">注意：此页面仅供系统管理员使用</p>
+            </div>
+        </section>
+        
+        <!-- 管理员控制面板 -->
+        <section id="admin-panel" class="admin-panel" style="display: none;">
+            <div class="admin-header">
+                <h2>管理员控制面板</h2>
+                <div class="admin-info">
+                    <span>欢迎，<span id="admin-name">管理员</span></span>
+                    <button id="admin-logout-btn" class="btn small-btn">退出</button>
+                </div>
+            </div>
+            
+            <div class="admin-tabs">
+                <div class="tab active" data-tab="invite-codes">邀请码管理</div>
+                <div class="tab" data-tab="users">用户管理</div>
+                <div class="tab" data-tab="system">系统设置</div>
+                <div class="tab" data-tab="class-management">班级管理</div>
+            </div>
+            
+            <!-- 邀请码管理 -->
+            <div class="tab-content" id="invite-codes-tab">
+                <div class="section-header">
+                    <h3>邀请码管理</h3>
+                    <div class="actions">
+                        <button id="refresh-invite-codes-btn" class="btn small-btn">刷新</button>
+                        <button id="export-invite-codes-btn" class="btn small-btn">导出</button>
+                    </div>
+                </div>
+                
+                <div class="invite-code-generator">
+                    <h4>生成新邀请码</h4>
+                    <div class="generator-form">
+                        <div class="form-group">
+                            <label for="invite-code-type">类型</label>
+                            <select id="invite-code-type">
+                                <option value="student">学生</option>
+                                <option value="teacher">教师</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="invite-code-expiry">有效期（天）</label>
+                            <input type="number" id="invite-code-expiry" value="30" min="1" max="365">
+                        </div>
+                        <button id="generate-invite-code-btn" class="btn primary-btn">生成邀请码</button>
+                    </div>
+                </div>
+                
+                <div class="invite-codes-list-container">
+                    <h4>邀请码列表</h4>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>邀请码</th>
+                                    <th>类型</th>
+                                    <th>状态</th>
+                                    <th>是否已使用</th>
+                                    <th>过期日期</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="invite-codes-list">
+                                <!-- 邀请码列表将通过JavaScript动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="invite-code-instructions">
+                    <h4>如何使用邀请码</h4>
+                    <ol>
+                        <li>生成邀请码后，可以通过复制按钮复制邀请码</li>
+                        <li>将邀请码分发给学生或教师（可通过邮件、短信或其他方式）</li>
+                        <li>用户在注册时需要输入邀请码才能完成注册</li>
+                        <li>每个邀请码只能使用一次，使用后将失效</li>
+                        <li>邀请码有效期到期后也将失效</li>
+                        <li>可以随时删除未使用的邀请码</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <!-- 用户管理 -->
+            <div class="tab-content" id="users-tab" style="display: none;">
+                <div class="section-header">
+                    <h3>用户管理</h3>
+                    <div class="actions">
+                        <button class="btn small-btn">刷新</button>
+                    </div>
+                </div>
+                
+                <p class="coming-soon">用户管理功能开发中...</p>
+            </div>
+            
+            <!-- 系统设置 -->
+            <div class="tab-content" id="system-tab" style="display: none;">
+                <div class="section-header">
+                    <h3>系统设置</h3>
+                </div>
+                
+                <p class="coming-soon">系统设置功能开发中...</p>
+            </div>
+            
+            <!-- 班级管理 -->
+            <div class="tab-content" id="class-management-tab">
+                <div class="section-header">
+                    <h3>班级管理</h3>
+                    <button id="create-class-btn" class="btn primary-btn">新建班级</button>
+                </div>
+                
+                <!-- 班级创建表单 -->
+                <div class="class-creator">
+                    <div class="form-group">
+                        <label>年级选择</label>
+                        <select id="class-grade">
+                            <option value="1">一年级</option>
+                            <option value="2">二年级</option>
+                            <!-- ...其他年级选项... -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>主教学科</label>
+                        <select id="class-subject">
+                            <option value="chinese">语文</option>
+                            <option value="math">数学</option>
+                            <!-- ...其他学科... -->
+                        </select>
+                    </div>
+                    <button class="btn" onclick="createClass()">创建班级</button>
+                </div>
+                
+                <!-- 班级列表 -->
+                <div class="class-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>班级名称</th>
+                                <th>班主任</th>
+                                <th>学生人数</th>
+                                <th>有效邀请码</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="class-list-body">
+                            <!-- 动态加载班级数据 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 智能作业批改系统 - 管理员控制台</p>
+        </div>
+    </footer>
+    
+    <script src="js/database.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html> 

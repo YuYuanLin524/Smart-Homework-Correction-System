@@ -1,0 +1,279 @@
+/* 管理员页面样式 */
+.admin-page {
+    background-color: #f5f7fa;
+}
+
+.admin-page header {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 15px 0;
+}
+
+.admin-page .logo {
+    display: flex;
+    align-items: center;
+}
+
+.admin-page .logo h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.admin-page .subtitle {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #ccc;
+    padding-left: 10px;
+    border-left: 1px solid #555;
+}
+
+/* 管理员登录部分 */
+.admin-login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.admin-login-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.admin-login-container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.admin-note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #888;
+    text-align: center;
+}
+
+/* 管理员控制面板 */
+.admin-panel {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.admin-info {
+    display: flex;
+    align-items: center;
+}
+
+.admin-info span {
+    margin-right: 15px;
+}
+
+/* 标签页 */
+.admin-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.admin-tabs .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.admin-tabs .tab:hover {
+    background-color: #f5f7fa;
+}
+
+.admin-tabs .tab.active {
+    border-bottom-color: #007aff;
+    color: #007aff;
+    font-weight: 500;
+}
+
+/* 标签内容 */
+.tab-content {
+    margin-bottom: 30px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* 邀请码生成器 */
+.invite-code-generator {
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.invite-code-generator h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.generator-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.generator-form .form-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* 邀请码列表 */
+.invite-codes-list-container {
+    margin-bottom: 20px;
+}
+
+.invite-codes-list-container h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+    background-color: #f5f7fa;
+    font-weight: 500;
+    color: #555;
+}
+
+.data-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.data-table tr.depleted {
+    background-color: #ffeeee;
+}
+
+.data-table tr.expired {
+    background-color: #fff5e6;
+}
+
+.data-table tr.used {
+    background-color: #f0f8ff;
+}
+
+/* 邀请码使用说明 */
+.invite-code-instructions {
+    background-color: #f5f7fa;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.invite-code-instructions h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.invite-code-instructions ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.invite-code-instructions li {
+    margin-bottom: 8px;
+}
+
+/* 按钮样式 */
+.small-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.copy-btn {
+    background-color: #4caf50;
+    color: white;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+}
+
+/* 开发中提示 */
+.coming-soon {
+    text-align: center;
+    padding: 50px 0;
+    color: #888;
+    font-style: italic;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .generator-form {
+        flex-direction: column;
+    }
+    
+    .generator-form .form-group {
+        width: 100%;
+    }
+    
+    .admin-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .admin-info {
+        margin-top: 10px;
+    }
+} 
